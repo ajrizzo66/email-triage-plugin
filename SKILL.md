@@ -1,5 +1,5 @@
 ---
-name: email-triage
+name: email-triage-plugin
 description: >
   This skill should be used when the user asks to "check email", "triage my inbox",
   "check my email", "morning email", "inbox summary", or invokes /email or /summary.
@@ -130,6 +130,50 @@ Format output as:
 ```
 
 **Numbering matters.** Tier 1 items are numbered so you can say "draft a reply to #3."
+
+## Step 3.5 — Newsletter Intelligence Briefing
+After presenting the triage results, always generate a newsletter intelligence briefing when newsletters are present in the inbox. Tailor it to the user's role and focus area.
+Default focus for Tony Rizzo: Enterprise SaaS CPO lens — AI platform developments, product strategy signals, market dynamics, and workforce/org design trends.
+Which newsletters to include
+Read the full body of newsletters likely to contain substantive, signal-rich content. Good candidates:
+
+Tech/AI: TLDR AI, TLDR Tech, TLDR Product, The Information, Every, The Product Compass, Stratechery
+Business/general: Morning Brew, WSJ What's News, Bloomberg, The Hustle, CNN Morning Briefing
+Product/leadership: Substack authors on product management, leadership, or org design
+Thought leadership: Seth Godin, Paul Graham essays, etc.
+
+Skip newsletters that are primarily promotional (job boards, deal newsletters, event marketing).
+How to read efficiently
+Call read_gmail_message on 5–10 of the most relevant newsletters based on subject and snippet. Prioritize quality over volume — a great briefing from 6 newsletters beats a thin summary of 20.
+Briefing structure
+Organize by theme, not source. Group related signals from multiple newsletters rather than summarizing each one in isolation. Aim for 4–6 thematic sections. Each section should:
+
+Open with the key insight in 1–2 sentences
+Note the implication — what does this mean for product strategy, roadmap, hiring, or competitive positioning?
+Stay skimmable — the user decides what to dig into
+
+Example themes for a CPO of Enterprise SaaS:
+
+AI platform & vendor updates (what changed at Anthropic, OpenAI, Google this week)
+Market structure signals (M&A, funding, competitive dynamics)
+Product strategy & frameworks (new ideas on building, prioritizing, measuring)
+Enterprise AI adoption patterns (what enterprise customers are actually doing)
+Workforce & org design trends
+World context (macro, policy, market moves relevant to enterprise SaaS)
+
+Output format
+markdown## 📰 Newsletter Intelligence — [Date]
+*Synthesized from [newsletter names]*
+
+### [Theme 1 Headline]
+[2-3 sentence summary of the signal]
+**CPO take:** [One concrete implication for product strategy or decisions]
+
+### [Theme 2 Headline]
+...
+If there are no substantive newsletters in the inbox, skip this step silently.
+Offer to save
+After presenting the briefing, offer to save it as a markdown file to the outputs folder.
 
 ## Step 4 — Reply Drafting (conversational)
 
